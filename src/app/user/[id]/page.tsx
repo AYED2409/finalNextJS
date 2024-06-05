@@ -15,7 +15,7 @@ export default async function Page({ params, searchParams }: { params: { id: str
     const page = searchParams?.page || 1;
     const limit = searchParams?.limit || 6;
     const videosUser = await getVideoUser(idUser, `${limit}` , 'date', 'DESC',`${page}`);
-    const totalVideos = await getTotalVideosUser(idUser, `${page}`);
+    const totalVideos = await getTotalVideosUser(idUser);
     const numberSubscribers = await getNumberSubscribersUser(idUser);
     const playlistUser = await getMyPlaylists(idUser);
     const user = await getUser(idUser);
@@ -25,7 +25,7 @@ export default async function Page({ params, searchParams }: { params: { id: str
     } else {
         return (
             <>
-                <ProfileUser user={user} numberSubscribers={numberSubscribers } playlistUser={playlistUser} page={page} limit={limit} totalVideos={totalVideos}/>
+                <ProfileUser user={user} numberSubscribers={numberSubscribers } playlistUser={playlistUser} page={String(page)} limit={String(limit)} totalVideos={totalVideos}/>
                 <ResultSearch query={query}/> 
                 <Footer /> 
             </>
