@@ -96,3 +96,11 @@ export type PlaylistVideo = {
     createAt: string;
     video: Video;
 }
+
+export type Subscription = {
+    id: string;
+    createAt: string;
+    updateAt: string;
+    deleteAt: string;
+    subscriber: User;
+}

@@ -3,10 +3,10 @@
 import { useSession } from "next-auth/react";
 import { FormEvent, useEffect, useState } from "react";
 import { subscribeto,getSubscribers,desSubscription } from "../lib/actions";
-import { User } from "../lib/definitions";
+import { Subscription, User } from "../lib/definitions";
 import { useRouter } from "next/navigation";
 
-export default function ButtonSubscription({ user, subscriberList }: { user: User, subscriberList: [] }) {
+export default function ButtonSubscription({ user, subscriberList }: { user: User, subscriberList: Subscription[] }) {
     const { data: session } = useSession();
     const [subscribers, setSubscribers] = useState(subscriberList);
     const [isSubscriber, setIsSubscriber] = useState(subscriberList.findIndex((subscription) => subscription.subscriber.id == session?.user.id))
@@ -16,7 +16,7 @@ export default function ButtonSubscription({ user, subscriberList }: { user: Use
         const getData = async () => {
             let suscriptores = await getSubscribers(user.id);
             setSubscribers(suscriptores);
-            setIsSubscriber(suscriptores.findIndex((sub) => sub.subscriber.id == session?.user.id))
+            setIsSubscriber(suscriptores.findIndex((sub: Subscription) => sub.subscriber.id == session?.user.id))
         }
         getData();
     },[session])
@@ -26,7 +26,7 @@ export default function ButtonSubscription({ user, subscriberList }: { user: Use
         const res = await subscribeto(session?.user.token,user.id)
         const subscriberList = await getSubscribers(`${user.id}`);
         setSubscribers(subscriberList)
-        setIsSubscriber(subscriberList.findIndex((subscription) => subscription.subscriber.id == session?.user.id))
+        setIsSubscriber(subscriberList.findIndex((subscription: Subscription) => subscription.subscriber.id == session?.user.id))
     }
 
     const handlerDesSubscription = async (event: FormEvent<HTMLFormElement>) => {
