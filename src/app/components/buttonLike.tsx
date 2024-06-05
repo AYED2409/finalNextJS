@@ -26,19 +26,25 @@ export default function ButtonLike({ idVideo, likeList }: { idVideo: string, lik
     }, [idVideo, session]); 
 
     const upLike = async () => {
-        const res = await doLike(session?.user.token, idVideo);
-        let listLikes = await getLikes();
-        setLikes(listLikes);
-        setIsLike(
-            listLikes.findIndex((like: Like) => like.user.id == session?.user.id && like.video.id == idVideo)
-        );
+        if(session?.user.token) {
+            const res = await doLike(session?.user.token, idVideo);
+            let listLikes = await getLikes();
+            setLikes(listLikes);
+            setIsLike(
+                listLikes.findIndex((like: Like) => like.user.id == session?.user.id && like.video.id == idVideo)
+            );    
+        }
+        
     }
 
     const downLike = async() => {
-        const res = await desLike(session?.user.token, likes[isLike].id);
-        let listLikes = await getLikes();
-        setLikes(listLikes);
-        setIsLike(-1);
+        if(session?.user.token) {
+            const res = await desLike(session?.user.token, likes[isLike].id);
+            let listLikes = await getLikes();
+            setLikes(listLikes);
+            setIsLike(-1);    
+        }
+        
     }
 
     if (session?.user) {
