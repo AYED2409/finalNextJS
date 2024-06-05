@@ -9,8 +9,11 @@ export default function ButtonDeletePlaylist({ idPlaylist, idUser }: { idPlaylis
     const router = useRouter();
 
     const handlerClick = async () => {
-        const res = await deletePlaylist(session?.user.token, idPlaylist);
-        router.refresh();
+
+        if(session?.user.token) {
+            const res = await deletePlaylist(session?.user.token, idPlaylist);
+            router.refresh();
+        }
     }
 
     if (idUser == session?.user.id) {

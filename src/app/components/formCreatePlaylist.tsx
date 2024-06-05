@@ -19,16 +19,19 @@ export default function FormCreatePlaylist() {
         setMessage('');
         event.preventDefault();
         const body = { name: namePlaylist}
-        const res = await createPlaylist(session?.user.token,body);
-        if (res.error) {
-            setErrors(Array.isArray(res.error) ? res.message : [res.message])
-            return;
-        }
-        if (res.id) {
-            setMessage(` ${namePlaylist} Playlist created successfully`);
-            setNamePlaylist('')
-            formRef.current.reset();
-        }
+		if(session?.user.token) {
+			const res = await createPlaylist(session?.user.token, body);
+			if (res.error) {
+				setErrors(Array.isArray(res.error) ? res.message : [res.message])
+				return;
+			}
+			if (res.id) {
+				setMessage(` ${namePlaylist} Playlist created successfully`);
+				setNamePlaylist('')
+				formRef.current.reset();
+			}
+		}
+        
     }
 
     return (   

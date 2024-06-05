@@ -48,10 +48,13 @@ export default function ReproductorPlaylist({ videoList, idPlaylist }: { videoLi
     }
 
     const deleteVideoPlaylist = async(idPlaylistVideo: string) => {
-        const res = await deleteVideoToPlaylist(session?.user.token, idPlaylistVideo);
-        setTotalVideos(totalVideos-1);
-        // console.log(res);
-        // router.refresh();
+        if(session?.user.token) {
+            const res = await deleteVideoToPlaylist(session?.user.token, idPlaylistVideo);
+            setTotalVideos(totalVideos-1);
+            // console.log(res);
+            // router.refresh();    
+        }
+        
     }
 
     if (videoList.length == 0) {

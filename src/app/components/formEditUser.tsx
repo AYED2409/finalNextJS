@@ -41,27 +41,33 @@ export default function FormEditUser({ user }: { user: User }) {
         }
 
         if (image != null) {
-            const form = new FormData();
-            form.append('image', image);
-            const setImage = await updateUserImage(session?.user.token, form);
-            if (setImage.message) {
-                setErrors([setImage.message]);
-                hasError = true;
+            if (session?.user.token) {
+                const form = new FormData();
+                form.append('image', image);
+                const setImage = await updateUserImage(session?.user.token, form);
+                if (setImage.message) {
+                    setErrors([setImage.message]);
+                    hasError = true;
+                }
             }
+            
         }
 
         if (!hasError) {
-            const body = {username, email}
-            if (newPassword.length > 0) {
-                body.password = newPassword;
+            if(session?.user.token) {
+                const body = {username, email}
+                if (newPassword.length > 0) {
+                    body.password = newPassword;
+                }
+                const res = await updateUser(user.id, session?.user.token, body);
+                if (res.affected) {
+                    setMessage('data updated correctly')
+                    setActualPassword('')
+                } else {
+                    setErrors(res.message)
+                }
             }
-            const res = await updateUser(user.id, session?.user.token, body);
-            if (res.affected) {
-                setMessage('data updated correctly')
-                setActualPassword('')
-            } else {
-                setErrors(res.message)
-            }
+            
         }
     }
 

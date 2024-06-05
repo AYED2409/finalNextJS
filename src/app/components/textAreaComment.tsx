@@ -4,11 +4,12 @@ import { useRef, useState } from "react";
 import { addComment } from "../lib/actions";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { string } from "zod";
 
 export default function TextAreaComment({ idVideo }: { idVideo: string}) {
     const { data: session } = useSession();
     const [text, setText] = useState<string | undefined>(undefined);
-    const [errors, setErrors] = useState([]);
+    const [errors, setErrors] = useState<string[]>([]);
     const [message, setMessage] = useState<string | undefined>(undefined);
     const formRef = useRef<HTMLFormElement>(null);
     const router = useRouter();

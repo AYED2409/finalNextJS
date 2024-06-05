@@ -9,9 +9,11 @@ export default function ButtonDeleteVideo({ idVideo }: { idVideo: string }) {
     const { data: session } = useSession();
 
     const handlerClick = async () => {
-        const res = await deleteVideo(idVideo, session?.user.token)
+        if(session?.user.token) {
+            const res = await deleteVideo(idVideo, session?.user.token)
             //router.push(`/user/${session?.user.id}`)
             router.refresh();
+        }
     }
     
     return (

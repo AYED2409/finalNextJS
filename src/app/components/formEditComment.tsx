@@ -16,13 +16,19 @@ export default function FormEditComment({ comment }: { comment: Comment }) {
 
     const handlerSubmit = async(event: React.FormEvent<HTMLElement>) => {
        event.preventDefault();
-       const res = await editComment(session?.user.token, comment.id, {text});
+		if(session?.user.token) {
+			const res = await editComment(session?.user.token, comment.id, {text});
+		}
+       
     //    router.refresh();
     }
 
     const handlerDelete = async() => {
-        const res = await deleteComment(session?.user.token, comment.id);
-        router.refresh();
+		if(session?.user.token) {
+			const res = await deleteComment(session?.user.token, comment.id);
+        	router.refresh();
+		}
+        
     }
     return (
         <div className="row">

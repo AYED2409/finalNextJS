@@ -18,14 +18,17 @@ export default function FormCreateTag() {
         setErrors([]);
         setMessage('')
         event.preventDefault();
-        const res = await createTag(nameTag, session?.user.token);
-        if (res.error || res.message) {
-            setErrors(Array.isArray(res.error) ? res.message : [res.message])
-        } else {{
-            setMessage(` ${nameTag} Tag created correctly`)
-            formRef.current.reset();
-            setNameTag('')
-        }}
+        if(session?.user.token) {
+            const res = await createTag(nameTag, session?.user.token);
+            if (res.error || res.message) {
+                setErrors(Array.isArray(res.error) ? res.message : [res.message])
+            } else {{
+                setMessage(` ${nameTag} Tag created correctly`)
+                formRef.current.reset();
+                setNameTag('')
+            }}
+        }
+        
     }
 
     return (

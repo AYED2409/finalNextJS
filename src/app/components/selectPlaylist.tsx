@@ -44,15 +44,18 @@ export default function SelectPlaylist( { idVideo }: { idVideo: string }) {
     },[session?.user]);
 
     const handlerSubmit = async(event: React.FormEvent<HTMLElement>) => {
-        event.preventDefault();
-        setError(null);
-        setMessage('');
-        const res = await addVideoToPlaylist(session?.user.token, { idVideo, idPlaylist: keySelection })
-        if (res.error) {
-            setError("You must create a playlist");
-        } else {
-            setMessage('Playlist Added Successfully');
+        if(session?.user.token) {
+            event.preventDefault();
+            setError(null);
+            setMessage('');
+            const res = await addVideoToPlaylist(session?.user.token, { idVideo, idPlaylist: keySelection })
+            if (res.error) {
+                setError("You must create a playlist");
+            } else {
+                setMessage('Playlist Added Successfully');
+            }
         }
+        
     }
 
     const handlerSelection = (event: React.FormEvent<HTMLSelectElement>) => {

@@ -13,12 +13,15 @@ export default function AddCategory() {
         setErrors([]);
         setMessage('');
         event.preventDefault();
-        const res = await createCategory(name, session?.user.token);
-        if (res.error) {
-            setErrors(res.message)
-        } else {
-            setMessage(` ${res.name} Category created correctly`)
+        if(session?.user.token){
+            const res = await createCategory(name, session?.user.token);
+            if (res.error) {
+                setErrors(res.message)
+            } else {
+                setMessage(` ${res.name} Category created correctly`)
+            }
         }
+        
     }
 
     return (

@@ -51,36 +51,39 @@ export default function FormCreateVideo({ categories, tags }: { categories: [], 
     }
 
     const submitForm = async (formData: FormData) => {
-        const res = await createVideo(formData, session?.user.token);
-        const data = await res.json();
-        if (!res.ok) {
-            setError(data.message);
-        }
-        if(res.status == 201) {
-			if(thumbnail != null) {
-				const idVideo = data.id;
-				const formThumbnail = new FormData();
-				formThumbnail.append('thumbnail', thumbnail)
-				const uploadThumbnail = await updateThumbnailVideo(session?.user.token, idVideo, formThumbnail)
-                if(uploadThumbnail.statusCode == 400) {
-                    setError(`the thumbnain was not uploaded ${uploadThumbnail.message}`)
-                }
+		if(session?.user.token) {
+			const res = await createVideo(formData, session?.user.token);
+			const data = await res.json();
+			if (!res.ok) {
+				setError(data.message);
 			}
-            setMessage("Video Subido exitosamente");
-            setDescription("");
-            setTitle("");
-            setCategory("");
-            setValueTags([]);
-            setFile(null);
-			setThumbnail(null)
-            const tagList = tagsState.filter((tag: Tag) => tag.checked);
-            const messagesErrorsTags = await setTags(tagList, session?.user.token, data.id);
-            if (messagesErrorsTags.length > 0) {
-                setErrorsTags(messagesErrorsTags)
-                return;
-            }
-            formRef.current?.reset();
-        }
+			if(res.status == 201) {
+				if(thumbnail != null) {
+					const idVideo = data.id;
+					const formThumbnail = new FormData();
+					formThumbnail.append('thumbnail', thumbnail)
+					const uploadThumbnail = await updateThumbnailVideo(session?.user.token, idVideo, formThumbnail)
+					if(uploadThumbnail.statusCode == 400) {
+						setError(`the thumbnain was not uploaded ${uploadThumbnail.message}`)
+					}
+				}
+				setMessage("Video Subido exitosamente");
+				setDescription("");
+				setTitle("");
+				setCategory("");
+				setValueTags([]);
+				setFile(null);
+				setThumbnail(null)
+				const tagList = tagsState.filter((tag: Tag) => tag.checked);
+				const messagesErrorsTags = await setTags(tagList, session?.user.token, data.id);
+				if (messagesErrorsTags.length > 0) {
+					setErrorsTags(messagesErrorsTags)
+					return;
+				}
+				formRef.current?.reset();
+			}
+		}
+        
     }
     
     return (

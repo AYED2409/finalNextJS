@@ -56,24 +56,27 @@ export default function FormEditVideo({ categories, video, tags }: { categories:
     }
 
     const submitForm = async (formData: FormData) => {
-        const res = await editVideo(formData, video.id, session?.user.token);
-        const data = await res.json();
-        if (data.affected > 0) {
-            setMessage('Changes saved successfully');
-            if(thumbnail) {
-                const formThumbnail = new FormData();
-                formThumbnail.append('thumbnail', thumbnail);
-                const resThumbnail = await updateThumbnailVideo(session?.user.token, video.id, formThumbnail);
-                if(resThumbnail.statusCode == 400) {
-                    setError(`the thumbnain was not uploaded ${resThumbnail.message}`)
+        if(session?.user.token) {
+            const res = await editVideo(formData, video.id, session?.user.token);
+            const data = await res.json();
+            if (data.affected > 0) {
+                setMessage('Changes saved successfully');
+                if(thumbnail) {
+                    const formThumbnail = new FormData();
+                    formThumbnail.append('thumbnail', thumbnail);
+                    const resThumbnail = await updateThumbnailVideo(session?.user.token, video.id, formThumbnail);
+                    if(resThumbnail.statusCode == 400) {
+                        setError(`the thumbnain was not uploaded ${resThumbnail.message}`)
+                    }
                 }
             }
+            if (data.error) {
+                setError(data.message);
+                return;
+            }
+            addOrDeleteTags(tagsStateInit, tagsState, session?.user.token, video);
         }
-        if (data.error) {
-            setError(data.message);
-            return;
-        }
-        addOrDeleteTags(tagsStateInit, tagsState, session?.user.token, video);
+        
     }
 
     return (

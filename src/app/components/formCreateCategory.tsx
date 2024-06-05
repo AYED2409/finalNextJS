@@ -18,14 +18,17 @@ export default function FormCreateCategory() {
         setErrors([]);
         setMessage('');
         event.preventDefault();
-        const res = await createCategory(name, session?.user.token);
-        if (res.error) {
-            setErrors(Array.isArray(res.error) ? res.message : [res.message])
-        } else {
-            setMessage(`Category ${res.name} created correctly`);
-            formRef.current.reset();
-            setName('');
+        if(session?.user.token) {
+            const res = await createCategory(name, session?.user.token);
+            if (res.error) {
+                setErrors(Array.isArray(res.error) ? res.message : [res.message])
+            } else {
+                setMessage(`Category ${res.name} created correctly`);
+                formRef.current.reset();
+                setName('');
+            }
         }
+        
     }
 
     return (
