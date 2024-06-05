@@ -63,7 +63,7 @@ export default function TextAreaComment({ idVideo }: { idVideo: string}) {
                     onChange={(event) => setText(event.target.value)}
                 />  
                 <label htmlFor="textarea1" className="active">
-                    "Add a comment...."
+                &quot;Add a comment.... &quot;
                 </label>
                 <button 
                     className="waves-effect waves-light btn color-button" 

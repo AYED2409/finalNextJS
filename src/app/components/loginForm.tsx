@@ -107,7 +107,7 @@ const LoginForm = () => {
 												</div>
 											</div>
 										</form>
-										Don't you have already an account? 
+										Don&apos;t you have already an account? 
 										<Link href={"/register"} className="login-link">Register</Link>
 										
 									</div>

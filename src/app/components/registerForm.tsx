@@ -141,7 +141,7 @@ const RegisterForm = () => {
 											<p>
 												<label>
 													<input type="checkbox" />
-													<span>I accept Vidi's <a className="login-link" href="#">Terms of Use</a> and <a className="login-link" href="#">Privacy Policy</a></span>
+													<span>I accept Vidi&apos;s <a className="login-link" href="#">Terms of Use</a> and <a className="login-link" href="#">Privacy Policy</a></span>
 												</label>
 											</p>
 											<br />
