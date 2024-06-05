@@ -24,7 +24,9 @@ export default function FormCreateCategory() {
                 setErrors(Array.isArray(res.error) ? res.message : [res.message])
             } else {
                 setMessage(`Category ${res.name} created correctly`);
-                formRef.current.reset();
+                if(formRef.current){
+                    formRef.current.reset();    
+                }
                 setName('');
             }
         }
