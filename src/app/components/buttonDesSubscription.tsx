@@ -12,9 +12,12 @@ export default function ButtonDesSubscription({ user }: { user: User} ) {
     const router = useRouter();
     
     const handlerSubmit = async (event: FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-        const res = await desSubscription(session?.user.token,user.id)
-        // router.refresh();
+        if (session?.user.token) {
+            event.preventDefault();
+            const res = await desSubscription(session?.user.token,user.id)
+            // router.refresh();    
+        }
+        
     }
 
     if (session?.user) {
