@@ -174,7 +174,10 @@ export const addOrDeleteTags = (stateInitTags: Tag[], newStateTags: Tag[], token
                 setVideoTag(token, body);
             } else {
                 const videoTag = video.videoTags.find((videotag) => videotag.tag.id == tag.id)
-                removeVideoTag(token, videoTag.id);
+                if(videoTag) {
+                    removeVideoTag(token, videoTag.id);    
+                }
+               
             }
         }
     })
