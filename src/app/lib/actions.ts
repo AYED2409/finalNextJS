@@ -5,7 +5,7 @@ import { Tag, Video } from "./definitions";
 export async function getVideos(page: string, limit: string) {
     unstable_noStore();
     try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/videos?page=${page}&limit=${limit}`);
+        const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/videos?page=${page}&limit=${limit}&order=DESC&orderBy=date`);
         const data = await res.json();
         
         return data;      
@@ -400,11 +400,11 @@ export const getTotalVideosUser = async (idUser: string) => {
 }
 
 //obtener hace cuanto se subio un video min/horas/dias
-export const difhora = (hVideo) => {
+export const difhora = (hVideo:string) => {
     const horaActual = new Date();
     horaActual.setHours(horaActual.getHours() - 2)
     var hProp = new Date(hVideo);
-    var difMilisegundos =  horaActual - hProp;
+    var difMilisegundos:number =  horaActual.getTime() - hProp.getTime();
     var dias = Math.floor(difMilisegundos / (1000 * 60 * 60 * 24));
     var horas = Math.floor((difMilisegundos % (1000 * 60 * 60 * 24)) / (1000 * 60 *60));
     var min = Math.floor((difMilisegundos % (1000 * 60 * 60)) / (1000 * 60));
