@@ -12,7 +12,7 @@ export default function FormCreateCategory() {
     const [errors, setErrors] = useState<string[]>([])
     const [message, setMessage] = useState<string>('');
     const router = useRouter();
-    const formRef = useRef(null);
+    const formRef = useRef<HTMLFormElement>(null);
 
     const handlerSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         setErrors([]);

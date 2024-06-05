@@ -11,7 +11,7 @@ export default function FormCreateTag() {
     const [activeLabel, setActiveLabel] = useState('');
     const [errors, setErrors] = useState<string[]>([])
     const [message, setMessage] = useState('');
-    const formRef = useRef(null);
+    const formRef = useRef<HTMLFormElement>(null);
     const router = useRouter();
 
     const handlerSubmit =  async(event: React.FormEvent<HTMLFormElement>) => {
@@ -24,7 +24,10 @@ export default function FormCreateTag() {
                 setErrors(Array.isArray(res.error) ? res.message : [res.message])
             } else {{
                 setMessage(` ${nameTag} Tag created correctly`)
-                formRef.current.reset();
+                if(formRef.current) {
+                    formRef.current.reset();    
+                }
+                
                 setNameTag('')
             }}
         }

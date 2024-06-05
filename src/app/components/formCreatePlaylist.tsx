@@ -11,7 +11,7 @@ export default function FormCreatePlaylist() {
     const [activeLabel, setActiveLabel] = useState('');
     const [errors, setErrors] = useState([]);
     const [message, setMessage] = useState<string>('');
-    const formRef = useRef(null);
+    const formRef = useRef<HTMLFormElement>(null);
     const router = useRouter()
     
     const handlerSubmit = async(event: React.FormEvent<HTMLElement>) => {
@@ -28,7 +28,10 @@ export default function FormCreatePlaylist() {
 			if (res.id) {
 				setMessage(` ${namePlaylist} Playlist created successfully`);
 				setNamePlaylist('')
-				formRef.current.reset();
+				if(formRef.current) {
+					formRef.current.reset();	
+				}
+				
 			}
 		}
         
