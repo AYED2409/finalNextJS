@@ -74,7 +74,7 @@ export function ListaVideos({ page, limit, total }: { page: string | number, lim
                     }  
                 </div>
             </div>
-            <Pagination page={page} limit={limit} total={total}/>
+            <Pagination page={String(page)} limit={String(limit)} total={String(total)}/>
         </div> 
     )
 }
