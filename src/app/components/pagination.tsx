@@ -3,9 +3,9 @@
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useState, useEffect } from "react";
 
-export default function Pagination({ page, limit, total }: { page: number | string, limit: number | string, total: number | string }) {
+export default function Pagination({ page, limit, total }: { page: string, limit: number | string, total: number | string }) {
     const [currentPage, setCurrentPage] = useState(1);
-    const [totalPage, setTotalPage] = useState(Math.ceil(total / limit));
+    const [totalPage, setTotalPage] = useState(Math.ceil(parseInt(total, 10) / limit));
     const searchParams = useSearchParams();
     const pathName = usePathname();
     const { replace } = useRouter();

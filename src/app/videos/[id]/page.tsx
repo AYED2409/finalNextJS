@@ -1,7 +1,7 @@
 import ButtonFloat from "@/app/components/buttonFloat";
 import Footer from "@/app/components/footer";
 import { ResultSearch } from "@/app/components/resultSearch";
-import { Video } from "@/app/components/video";
+import { VideoComponent } from "@/app/components/video";
 import { getVideoWithId } from "@/app/lib/actions";
 import { redirect } from "next/navigation";
 import { notFound } from "next/navigation";
@@ -17,7 +17,7 @@ export default async function Page({ params, searchParams }: { params: { id: str
     }
     return (
         <>
-            <Video id={id} />
+            <VideoComponent id={id} />
             <ResultSearch query={query} />
             <ButtonFloat />
             <Footer />

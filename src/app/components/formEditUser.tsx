@@ -55,7 +55,7 @@ export default function FormEditUser({ user }: { user: User }) {
 
         if (!hasError) {
             if(session?.user.token) {
-                const body = {username, email}
+                let body: { username: string; email: string; password?: string } = { username, email };
                 if (newPassword.length > 0) {
                     body.password = newPassword;
                 }

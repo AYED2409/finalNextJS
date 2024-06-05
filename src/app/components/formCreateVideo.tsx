@@ -14,13 +14,13 @@ export default function FormCreateVideo({ categories, tags }: { categories: [], 
     const [description, setDescription] = useState('');
     const [error, setError] = useState('');
     const [message, setMessage] = useState('');
-    const [tagsState, setTagsState] = useState(tags);
+    const [tagsState, setTagsState] = useState<Tag[]>(tags);
     const [errorsTags, setErrorsTags] = useState<string[] | []>([]);
     const [showSelect, setShowSelect] = useState<boolean>(false);
     const [showTags, setShowTags] = useState<boolean>(false);
     const [activeLabelTitle,setActiveLabelTitle] = useState('');
     const [activeLabelDescription,setActiveLabelDescription] = useState('');
-    const [valueTags, setValueTags] = useState([]);
+    const [valueTags, setValueTags] = useState<string[]>([]);
 	const [thumbnail, setThumbnail] = useState<File | null>(null); 
     const formRef = useRef<HTMLFormElement>(null);
     

@@ -10,7 +10,7 @@ import SelectPlaylist from "./selectPlaylist";
 import Image from "next/image";
 import Link from "next/link";
 
-export async function Video({ id }: { id: string }) {
+export async function VideoComponent({ id }: { id: string }) {
 
     const video: Video = await getVideoWithId(id);
     if (video) {

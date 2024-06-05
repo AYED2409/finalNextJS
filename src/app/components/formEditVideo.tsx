@@ -46,7 +46,7 @@ export default function FormEditVideo({ categories, video, tags }: { categories:
         if (category !== video.category.name) {
             form.append('category', category);
         }
-        if (file !== null) {
+        if (file) {
             form.append('file', file);
         }
         if (description != video.description) {

@@ -8,7 +8,7 @@ export default function Search({ placeholder }: { placeholder: string }) {
 	const pathName = usePathname();
 	const { replace } = useRouter();
 	const params = new URLSearchParams(searchParams);
-	const refInput = useRef(null);
+	const refInput = useRef<HTMLInputElement>(null);
 
 	async function handleSearch(term: string) {
 		if (term) {
@@ -22,7 +22,7 @@ export default function Search({ placeholder }: { placeholder: string }) {
   	return (
     	<li style={{ height: "64px" }}>
             <div className="input-field custom-black-text user-index-background tooltipped">
-            	<i className="material-icons prefix" onClick={() => refInput.current.focus()}>search</i>
+            	<i className="material-icons prefix" onClick={() => refInput.current?.focus()}>search</i>
                 <input 
 					ref={refInput} 
 					id="search" 
