@@ -22,17 +22,23 @@ export default function ButtonSubscription({ user, subscriberList }: { user: Use
     },[session])
 
     const handlerSubscription = async (event: FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-        const res = await subscribeto(session?.user.token,user.id)
-        const subscriberList = await getSubscribers(`${user.id}`);
-        setSubscribers(subscriberList)
-        setIsSubscriber(subscriberList.findIndex((subscription: Subscription) => subscription.subscriber.id == session?.user.id))
+        if(session?.user.token) {
+            event.preventDefault();
+            const res = await subscribeto(session?.user.token,user.id)
+            const subscriberList = await getSubscribers(`${user.id}`);
+            setSubscribers(subscriberList)
+            setIsSubscriber(subscriberList.findIndex((subscription: Subscription) => subscription.subscriber.id == session?.user.id))    
+        }
+        
     }
 
     const handlerDesSubscription = async (event: FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-        const res = await desSubscription(session?.user.token,user.id)
-        setIsSubscriber(-1)
+        if(session?.user.token) {
+            event.preventDefault();
+            const res = await desSubscription(session?.user.token,user.id)
+            setIsSubscriber(-1)    
+        }
+        
     }
 
     if (session?.user) {
