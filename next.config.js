@@ -23,6 +23,11 @@ const nextConfig = {
                 protocol: "http",
                 hostname: "localhost",
                 pathname: "/**"
+            },
+            {
+                protocol: "https",
+                hostname: "https://vidi-proyectodaw.onrender.com",
+                pathname: "/users/imageUser/*"
             }
         ]
     }
