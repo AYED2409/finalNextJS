@@ -8,21 +8,18 @@ export default function Footer() {
             			<p className="white-text">We are a team of college students working on this project like it&apos;s our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
           			</div>
           			<div className="col l3 s12">
-            			<h5 className="white-text">Settings</h5>
+            			<h5 className="white-text">Menu</h5>
             			<ul>
-							<li><a className="white-text" href="#!">Link 1</a></li>
-							<li><a className="white-text" href="#!">Link 2</a></li>
-							<li><a className="white-text" href="#!">Link 3</a></li>
-							<li><a className="white-text" href="#!">Link 4</a></li>
+							<li><a className="white-text" href="#!">Home</a></li>
+							<li><a className="white-text" href="#!">About us</a></li>
+
             			</ul>
           			</div>
           			<div className="col l3 s12">
-            			<h5 className="white-text">Connect</h5>
+            			<h5 className="white-text">Legal</h5>
             			<ul>
-							<li><a className="white-text" href="#!">Link 1</a></li>
-							<li><a className="white-text" href="#!">Link 2</a></li>
-							<li><a className="white-text" href="#!">Link 3</a></li>
-							<li><a className="white-text" href="#!">Link 4</a></li>
+							<li><a className="white-text" href="#!">Privacy Policy</a></li>
+							<li><a className="white-text" href="#!">Terms of Use</a></li>
             			</ul>
           			</div>
         		</div>
