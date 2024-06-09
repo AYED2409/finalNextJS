@@ -26,7 +26,7 @@ export default function Footer() {
       		</div>
       		<div className="footer-copyright">
         		<div className="container">
-          			Made by Materialize
+          			Made by VIDI
         		</div>
       		</div>
     	</footer>

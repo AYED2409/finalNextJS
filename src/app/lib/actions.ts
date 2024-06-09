@@ -7,7 +7,6 @@ export async function getVideos(page: string, limit: string) {
     try {
         const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/videos?page=${page}&limit=${limit}&order=DESC&orderBy=date`);
         const data = await res.json();
-        
         return data;      
     } catch (error) {
         return { message: 'Error al obtener los videos' };
@@ -110,6 +109,24 @@ export const getTags = async () => {
     unstable_noStore();
     const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/tags`)
     const data = await res.json();
+    return data;
+}
+
+//obtiene los videos que contienen un tag
+export const getVideosWithTag = async (tagId: string, page: string, limit: string) => {
+    unstable_noStore();
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/videos-tags/videos/tag/${tagId}?page=${page}&limit=${limit}`)
+    const data = await res.json();
+    console.log(data);
+    return data;
+}
+
+//obtiene un tag
+export const getTag = async (idTag: string) => {
+    unstable_noStore();
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/tags/${idTag}`)
+    const data = await res.json();
+    console.log(data);
     return data;
 }
 
@@ -396,6 +413,13 @@ export const getTotalVideos = async () => {
 export const getTotalVideosUser = async (idUser: string) => {
     const videosUser = await getVideoUser(idUser, '10000', 'date', 'DESC', '1');
     const total = videosUser.length;
+    return total;
+}
+
+//obtener el total de videos que tienen un tag
+export const getTotalVideosTag = async (idTag: string) => {
+    const videosTags = await getVideosWithTag(idTag, '1', '10000');
+    const total = videosTags.length;
     return total;
 }
 

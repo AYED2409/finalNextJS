@@ -55,7 +55,7 @@ export function ResultSearch({ query }: { query?: string; }) {
                                                 <span className="title"><b >Title: </b>{video.title}</span>
                                                 <br />
                                                 <br/>
-                                                <span><b>Category:</b>{video.category.name}</span>
+                                                <span><b>Category: </b> {video.category.name}</span>
                                                 <br />
                                                 <br/>
                                                 <span>
@@ -63,7 +63,9 @@ export function ResultSearch({ query }: { query?: string; }) {
                                                         {
                                                             video.videoTags.map((videoTag: VideoTag) => (
                                                                 <div className="flex" key={videoTag.id}>
-                                                                    <div className="col chip index-tag">{videoTag.tag.name}</div>
+                                                                    <Link href={`/tags/${videoTag.tag.id}`} className="col chip index-tag">
+                                                                        {videoTag.tag.name}
+                                                                    </Link>
                                                                 </div>
                                                             ))
                                                         }

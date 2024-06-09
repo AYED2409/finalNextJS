@@ -77,7 +77,7 @@ export default function FormEditUser({ user }: { user: User }) {
     }
 
     return (
-        <div className="login-page">
+        <div className="login-page" style={{ height: "100vh" }}>
                 <div className="container login-container valign-wrapper">
                     <div className="row upload-container">
                         <div className="col s0"></div>

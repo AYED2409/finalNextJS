@@ -59,7 +59,7 @@ export default function ReproductorPlaylist({ videoList, idPlaylist }: { videoLi
 
     if (videoList.length == 0) {
         return (
-            <div className="row" style={{height: "60vh"}}>
+            <div className="row" style={{height: "70vh"}}>
                 <div className="col s0 m3 l3"></div>
                 <div className="col s12 m6">
                     <div className="card">
@@ -67,7 +67,7 @@ export default function ReproductorPlaylist({ videoList, idPlaylist }: { videoLi
                             <br/>
                         </div>
                         <div className="card-content orange lighten-1">
-                            <p>El usuario No ha Agregado videos a esta Playlist </p>
+                            <p>The user has not added videos to this Playlist</p>
                         </div>
                     </div>
                 </div>

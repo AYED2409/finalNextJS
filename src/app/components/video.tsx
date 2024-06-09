@@ -76,9 +76,13 @@ export async function VideoComponent({ id }: { id: string }) {
                             <br />
                             {
                                 video.videoTags.map((videoTag: VideoTag) => (
-                                    <a key={videoTag.id}>
-                                        <div className="chip index-tag dropdown-trigger">{videoTag.tag.name}</div>
-                                    </a>
+                                    <Link 
+                                        href={`/tags/${videoTag.tag.id}`} 
+                                        key={videoTag.id} 
+                                        className="chip index-tag dropdown-trigger"
+                                    >
+                                        #{videoTag.tag.name}
+                                    </Link>
                                 ))
                             }
                             <p>{video.description}</p>

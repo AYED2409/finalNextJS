@@ -30,10 +30,7 @@ export default function Home({ searchParams }: { searchParams?: { query?: string
 							<div className="about-title">
 								<h4><b>Our origins</b></h4>
 							</div>
-							"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-							Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-							Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-							Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+							"Our project began with a shared passion for technology and creativity. We are a team of web developers dedicated to transforming the way people create, edit and share videos online. From our humble beginnings, we have worked tirelessly to innovate and deliver web tools that empower users, allowing them to bring their stories to life through the magic of video."
 						</div>
 						<div className="col s12 m12 l6"></div>
 					</div>
@@ -44,10 +41,7 @@ export default function Home({ searchParams }: { searchParams?: { query?: string
 							<div className="about-title">
 								<h4><b>Our mission</b></h4>
 							</div>
-							"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-							Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-							Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-							Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+							"We believe that the future of communication is in online video. We are committed to continuing to innovate, exploring new technologies and listening to our community to continue offering solutions that revolutionize the creation of audiovisual content."
 						</div>	
 					</div>
 				</div>

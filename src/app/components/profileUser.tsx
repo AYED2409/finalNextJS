@@ -27,8 +27,8 @@ export default function ProfileUser({ user, numberSubscribers, playlistUser, pag
 
     return(
         <>
-            <div className="container">
-                <div className="section">
+            <div className="container" >
+                <div className="section" style={{ minHeight: "70vh"}}>
                     <div className="row">
                         <div className="col user-image">
                             <Image 
@@ -40,11 +40,11 @@ export default function ProfileUser({ user, numberSubscribers, playlistUser, pag
                         </div>
                         <div className="col">
                             <h3>{user.username}</h3>
-                            @{user.username} -  suscriptores: {numberSubscribers} - {totalVid} videos
+                            @{user.username} -  suscriptors: {numberSubscribers}  -  {totalVid} videos
                         </div>
                     </div>
                     <br />
-                    <div className="">
+                    <div className="" >
                         <h5>Videos</h5>
                         <div className="row">
                             {

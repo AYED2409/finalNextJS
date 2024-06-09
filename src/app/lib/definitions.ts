@@ -53,6 +53,13 @@ export type VideoTag = {
     tag: Tag;
 }
 
+export type VideosWithTag = {
+    id: string;
+    createAt: string;
+    updateAt: string;
+    video: Video;
+}
+
 // export type Session = {
 //     user: {
 //         id: string;

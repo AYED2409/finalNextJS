@@ -4,7 +4,9 @@ import { ResultSearch } from "../components/resultSearch";
 import Pagination from "../components/pagination";
 import ButtonFloat from "../components/buttonFloat";
 import Footer from "../components/footer";
-import { getTotalVideos } from "../lib/actions";
+import { getTags, getTotalVideos } from "../lib/actions";
+import { Tag } from "../lib/definitions";
+import Link from "next/link";
 
 export const metadata: Metadata = {
     title: 'Videos',
@@ -15,6 +17,7 @@ export default async function Page({ searchParams }: { searchParams?: { query?: 
     const page = searchParams?.page || 1;
     const limit = searchParams?.limit || 6;
     const totalVideos = await getTotalVideos();
+    const tags = await getTags();
     return (
         <>
             <br />
@@ -22,12 +25,13 @@ export default async function Page({ searchParams }: { searchParams?: { query?: 
                 <a href="#">
                     <div className="chip index-tag-active">All</div>
                 </a>
-                <a href="#">
-                    <div className="chip index-tag">Demo</div>
-                </a>
-                <a href="#">
-                    <div className="chip index-tag">First</div>
-                </a>
+                {
+                    tags.map((tag: Tag) => (
+                        <Link href={`/tags/${tag.id}`} key={tag.id} className="chip index-tag">
+                            {tag.name}
+                        </Link>
+                    ))
+                }
             </div>
             <ButtonFloat />
             <ListaVideos page={page} limit={limit} total={totalVideos}/>
